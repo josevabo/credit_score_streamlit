@@ -1,11 +1,12 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 from utils import Transformador
 from joblib import load
 
 def avaliar_credito(dict_features):
-    modelo = load('outputs/modelo.joblib')
-    features = load('outputs/features.joblib')
+    modelo = load('objetos/modelo.joblib')
+    features = load('objetos/features.joblib')
 
     if sorted(list(dict_features.keys())) == sorted(features.to_list()):
         df = pd.DataFrame(dict_features, index=[0])
@@ -15,8 +16,17 @@ def avaliar_credito(dict_features):
     else:
         st.error("Faltam dados para avaliação. Por favor, preencha todos os campos.")
 
+st.write('''
+    <style>
+        li[role="option"]:hover {
+            background-color:rgb(68 99 137);
+        }
 
-
+        [data-baseweb="select"]>div {
+            cursor: pointer;
+        }
+    </style>
+''', unsafe_allow_html=True)
 st.image("img/bytebank_logo.png")
 st.write("# Simulador de avaliação de crédito")
 
@@ -24,7 +34,7 @@ my_expander1 = st.beta_expander("Trabalho")
 my_expander2 = st.beta_expander("Pessoal")
 my_expander3 = st.beta_expander("Família")
 
-lista_campos = load("outputs/lista_campos.joblib")
+lista_campos = load("objetos/lista_campos.joblib")
 dict_respostas = {}
 
 with my_expander1:
@@ -66,37 +76,3 @@ if st.button('Enviar dados'):
 
     st.write("Dados utilizados para avaliação:")
     st.write(dict_respostas)
-
-# st.write("## Resultado da avaliação")
-
-
-
-# df = pd.DataFrame(dict_respostas, index=[0])
-# print(list(dict_respostas.keys()))
-# features = load("outputs/features.joblib")
-# print(features.to_list())
-# print("São iguais?  ========>  ")
-# print(list(dict_respostas.keys()) == features.to_list())
-# print(df)
-# df
-# st.slider()
-# print(features)
-# Index(['Idade', 'Qtd_Filhos', 'Rendimento_Anual', 'Anos_empregado',
-#        'Tamanho_Familia', 'Tem_Carro', 'Tem_Casa_Propria',
-#        'Tem_telefone_trabalho', 'Tem_telefone_fixo', 'Tem_email',
-#        'Categoria_de_renda', 'Grau_Escolaridade', 'Estado_Civil', 'Moradia',
-#        'Ocupacao'],
-#       dtype='object')
-
-# df = pd.DataFrame({"coluna1": [1,2,3],"coluna2": [4,5,6],"coluna3": [7,8,9]}, index=['a', 'b','c'])
-
-# # st.line_chart(df)
-# df
-
-# st.write("Here's our first attempt at using data to create a table:")
-# st.write(pd.DataFrame({
-#     'first column': [1, 2, 3, 4],
-#     'second column': [10, 20, 30, 40]
-# }))
-
-# st.dataframe(df.style.highlight_max(axis=0))
