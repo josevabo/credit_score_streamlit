@@ -17,6 +17,7 @@ Junto das dependências será instalado também o pacote `streamlit`. Para execu
 > `streamlit run simulador.py`
 
 A aplicação também está publicada em página do streamlit:
+
 <https://share.streamlit.io/josevabo/credit_score_streamlit/main/simulador.py>
 
 ## Machine Learning
