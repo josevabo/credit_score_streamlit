@@ -15,6 +15,9 @@ Para instalação do projeto, inicialmente instalar as dependências do projeto:
 Junto das dependências será instalado também o pacote `streamlit`. Para execução da aplicação localmente, executar o comando via streamlit:
 > `streamlit run simulador.py`
 
+A aplicação também está publicada em página do streamlit:
+https://share.streamlit.io/josevabo/credit_score_streamlit/main/simulador.py
+
 ## Machine Learning
 O modelo foi treinado a partir de uma base de dados fictícia contendo, inicialmente, mais de um milhão de registros.
 
